@@ -29,6 +29,7 @@ GO_PKG:=github.com/gravitl/netmaker
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
 GO_PKG_EXCLUDES:=excluded
 GO_PKG_LDFLAGS:=-s -w
+GO_PKG_CGO_ENABLED:=0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
