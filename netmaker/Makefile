@@ -27,7 +27,7 @@ PKG_USE_MIPS16:=0
 
 GO_PKG:=github.com/gravitl/netmaker
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
-GO_PKG_BUILD_PKG:=github.com/gravitl/netclient
+GO_PKG_BUILD_PKG:=netclient
 GO_PKG_LDFLAGS:=-s -w
 GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION)
 
