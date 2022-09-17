@@ -14,26 +14,29 @@ start() {
   if [ ! -f "${LOG_FILE}" ];then
       touch "${LOG_FILE}"
   fi
-  local PID=$(ps|grep "netclient checkin -n all"|grep -v grep|awk '{print $1}')
+  local PID=$(ps|grep "netclient daemon"|grep -v grep|awk '{print $1}')
   if [ "${PID}" ];then
     echo "service is running"
     return
   fi
-  /bin/sh -c "while [ 1 ]; do netclient checkin -n all >> ${LOG_FILE} 2>&1;sleep 15;\
+  /bin/sh -c "netclient daemon  >> ${LOG_FILE} 2>&1;\
            if [ $(ls -l ${LOG_FILE}|awk '{print $5}') -gt 10240000 ];then tar zcf "${LOG_FILE}.tar" -C / "tmp/netclient.logs"  && > $LOG_FILE;fi;done &"
   echo "start"
 }
 
 stop() {
-  local PID=$(ps|grep "netclient checkin -n all"|grep -v grep|awk '{print $1}')
-  if [ "${PID}" ];then
-    kill "${PID}"
-  fi
+  pids=$(ps|grep "netclient daemon"|grep -v grep|awk '{print $1}')
+  for i in "${pids[@]}"
+  do
+    if [ "${i}" ];then
+      kill "${i}"
+    fi
+  done
   echo "stop"
 }
 
 status() {
-  local PID=$(ps|grep "netclient checkin -n all"|grep -v grep|awk '{print $1}')
+  local PID=$(ps|grep "netclient daemon"|grep -v grep|awk '{print $1}')
   if [ "${PID}" ];then
     echo -e "netclient[${PID}] is running \n"
   else
