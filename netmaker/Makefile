@@ -25,9 +25,9 @@ PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
 PKG_USE_MIPS16:=0
 
-GO_PKG:=github.com/gravitl/netmaker
+GO_PKG:=github.com/gravitl/netmaker/netclient
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
-GO_PKG_BUILD_PKG:=netclient
+GO_PKG_EXCLUDES:=gui
 GO_PKG_LDFLAGS:=-s -w
 GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION)
 
@@ -78,10 +78,7 @@ endef
 define Package/netmaker/install
 	$(INSTALL_DIR) $(1)/etc/netclient/
 	$(INSTALL_DIR) $(1)/etc/netclient/config
-	$(INSTALL_DIR) $(1)/etc/systemd/
-	$(INSTALL_DIR) $(1)/etc/systemd/system
 	$(INSTALL_DIR) $(1)/usr/bin
-	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netmaker $(1)/usr/bin/
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/netclient $(1)/usr/bin/
 	$(CP) ./root/* $(1)/
 	$(LN) netclient $(1)/etc/netclient/netclient
