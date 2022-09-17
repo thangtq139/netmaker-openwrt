@@ -27,9 +27,9 @@ PKG_USE_MIPS16:=0
 
 GO_PKG:=github.com/gravitl/netmaker
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
-GO_PKG_EXCLUDES:=excluded gui
+GO_PKG_BUILD_PKG:=github.com/gravitl/netclient
 GO_PKG_LDFLAGS:=-s -w
-GO_PKG_CGO_ENABLED:=0
+GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
