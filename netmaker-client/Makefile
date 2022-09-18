@@ -7,7 +7,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=netmaker
+PKG_NAME:=netmaker-client
 PKG_VERSION:=0.15.2
 PKG_RELEASE:=1
 
@@ -19,7 +19,7 @@ PKG_MIRROR_HASH:=skip
 
 PKG_LICENSE:=MIT
 PKG_LICENSE_FILES:=LICENSE
-PKG_MAINTAINER:=sbilly <superli_1980@hotmail.com>
+PKG_MAINTAINER:=thangtran <thang.tq.139@gmail.com>
 
 PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
@@ -34,34 +34,34 @@ GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION)
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
-define Package/netmaker
-$(call Package/netmaker/Default)
+define Package/netmaker-client
+$(call Package/netmaker-client/Default)
 $(call GoPackage/GoSubMenu)
   SECTION:=net
   CATEGORY:=Network
   SUBMENU:=VPN
 endef
 
-define Package/netmaker/Default
-  TITLE:=Netmaker for OpenWRT
+define Package/netmaker-client/Default
+  TITLE:=Netmaker client for OpenWRT
   URL:=https://github.com/gravitl/netmaker
   DEPENDS:=$(GO_ARCH_DEPENDS)
   MAINTAINER:=sbilly <superli_1980@hotmail.com>
 endef
 
-define Package/netmaker/Default/description
+define Package/netmaker-client/Default/description
 Netmaker is a platform for creating and managing fast, secure, and 
 dynamic virtual overlay networks using WireGuard. This project offers
-OpenWRT packages for Netmaker.
+OpenWRT packages for Netmaker client.
 endef
 
-define Package/netmaker/description
-$(call Package/netmaker/Default/description)
+define Package/netmaker-client/description
+$(call Package/netmaker-client/Default/description)
 
 This package contains the binaries.
 endef
 
-define Package/netmaker-dev
+define Package/netmaker-client-dev
   TITLE+= (source files)
   SECTION:=net
   CATEGORY:=Network
@@ -69,13 +69,13 @@ define Package/netmaker-dev
   PKGARCH:=all
 endef
 
-define Package/netmaker-dev/description
-$(call Package/netmaker/Default/description)
+define Package/netmaker-client-dev/description
+$(call Package/netmaker-client/Default/description)
 
 This package provides the source files.
 endef
 
-define Package/netmaker/install
+define Package/netmaker-client/install
 	$(INSTALL_DIR) $(1)/etc/netclient/
 	$(INSTALL_DIR) $(1)/etc/netclient/config
 	$(INSTALL_DIR) $(1)/usr/bin
@@ -84,8 +84,8 @@ define Package/netmaker/install
 	$(LN) netclient $(1)/etc/netclient/netclient
 endef
 
-$(eval $(call GoBinPackage,netmaker))
-$(eval $(call BuildPackage,netmaker))
+$(eval $(call GoBinPackage,netmaker-client))
+$(eval $(call BuildPackage,netmaker-client))
 
-$(eval $(call GoSrcPackage,netmaker-dev))
-$(eval $(call BuildPackage,netmaker-dev))
+$(eval $(call GoSrcPackage,netmaker-client-dev))
+$(eval $(call BuildPackage,netmaker-client-dev))
