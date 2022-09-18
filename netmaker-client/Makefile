@@ -29,7 +29,7 @@ GO_PKG:=github.com/gravitl/netmaker/netclient
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
 GO_PKG_EXCLUDES:=gui
 GO_PKG_LDFLAGS:=-s -w
-GO_PKG_LDFLAGS_X:=main.version=$(PKG_VERSION)
+GO_PKG_LDFLAGS_X:=main.version=v0.15.2
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
