@@ -45,8 +45,8 @@ endef
 define Package/netmaker-client/Default
   TITLE:=Netmaker client for OpenWRT
   URL:=https://github.com/gravitl/netmaker
-  DEPENDS:=$(GO_ARCH_DEPENDS)
-  MAINTAINER:=sbilly <superli_1980@hotmail.com>
+  DEPENDS:=$(GO_ARCH_DEPENDS) +kmod-wireguard +wireguard-tools
+  MAINTAINER:=thangtran <thang.tq.139@gmail.com>
 endef
 
 define Package/netmaker-client/Default/description
