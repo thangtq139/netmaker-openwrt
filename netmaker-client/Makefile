@@ -8,7 +8,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=netmaker-client
-PKG_VERSION:=0.15.2
+PKG_VERSION:=0.16.0
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
@@ -29,7 +29,7 @@ GO_PKG:=github.com/gravitl/netmaker/netclient
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
 GO_PKG_EXCLUDES:=gui
 GO_PKG_LDFLAGS:=-s -w
-GO_PKG_LDFLAGS_X:=main.version=v0.15.2
+GO_PKG_LDFLAGS_X:=main.version=v0.16.0
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
