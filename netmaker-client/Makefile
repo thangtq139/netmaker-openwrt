@@ -8,13 +8,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=netmaker-client
-PKG_VERSION:=0.16.0
+PKG_VERSION:=0.16.1
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/gravitl/netmaker.git
-PKG_SOURCE_VERSION:=0da5c388b6cc9a211c8cd679f9677aae02696ffa
-PKG_SOURCE_DATE:=20220915
+PKG_SOURCE_VERSION:=e0964fccfe9d02dd3e4c52ea98dc8faac99241c9
+PKG_SOURCE_DATE:=20221006
 PKG_MIRROR_HASH:=skip
 
 PKG_LICENSE:=MIT
@@ -29,7 +29,7 @@ GO_PKG:=github.com/gravitl/netmaker/netclient
 GO_PKG_INSTALL_EXTRA:=extra/file extra/dir
 GO_PKG_EXCLUDES:=gui
 GO_PKG_LDFLAGS:=-s -w
-GO_PKG_LDFLAGS_X:=main.version=v0.16.0
+GO_PKG_LDFLAGS_X:=main.version=v0.16.1
 
 include $(INCLUDE_DIR)/package.mk
 include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
